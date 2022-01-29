@@ -286,6 +286,10 @@ impl pallet_coinflip::Config for Runtime {
 	type Randomness = RandomnessCollectiveFlip;
 }
 
+impl pallet_benchmark_demo::Config for Runtime {
+	type Event = Event;
+	type WeightInfo = pallet_benchmark_demo::weight::SubstrateWeight<Runtime>;
+}
 // Create the runtime by composing the FRAME pallets that were previously configured.
 construct_runtime!(
 	pub enum Runtime where
@@ -305,6 +309,7 @@ construct_runtime!(
 		TemplateModule: pallet_template::{Pallet, Call, Storage, Event<T>},
 		PoeModule: pallet_poe::{Pallet, Call, Storage, Event<T>},
 		CoinFlipModule: pallet_coinflip::{Pallet, Call, Storage, Event<T>},
+		BenchmarkDemoModule: pallet_benchmark_demo::{Pallet, Call, Storage, Event<T>},
 	}
 );
 
@@ -516,6 +521,7 @@ impl_runtime_apis! {
 			add_benchmark!(params, batches, pallet_balances, Balances);
 			add_benchmark!(params, batches, pallet_timestamp, Timestamp);
 			add_benchmark!(params, batches, pallet_template, TemplateModule);
+			add_benchmark!(params, batches, pallet_benchmark_demo, BenchmarkDemoModule);
 
 			if batches.is_empty() { return Err("Benchmark not found for this pallet.".into()) }
 			Ok(batches)
