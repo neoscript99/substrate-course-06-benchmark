@@ -22,6 +22,7 @@ frame-support = { default-features = false, git = 'https://github.com/paritytech
 frame-system = { default-features = false, git = 'https://github.com/paritytech/substrate.git', tag = 'monthly-2021-10', version = '4.0.0-dev' }
 sp-std = { default-features = false, git = 'https://github.com/paritytech/substrate.git', tag = 'monthly-2021-10', version = '4.0.0-dev' }
 frame-benchmarking = { default-features = false, git = 'https://github.com/paritytech/substrate.git', tag = 'monthly-2021-10', version = '4.0.0-dev', optional = true }
+scale-info = {version = '1.0', default-features = false, features = ["derive"] }
 
 [features]
 default = ['std']

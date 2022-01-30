@@ -288,7 +288,7 @@ impl pallet_coinflip::Config for Runtime {
 
 impl pallet_benchmark_demo::Config for Runtime {
 	type Event = Event;
-	type WeightInfo = pallet_benchmark_demo::weight::SubstrateWeight<Runtime>;
+	type WeightInfo = pallet_benchmark_demo::weights::SubstrateWeight<Runtime>;
 }
 // Create the runtime by composing the FRAME pallets that were previously configured.
 construct_runtime!(
@@ -486,7 +486,8 @@ impl_runtime_apis! {
 			list_benchmark!(list, extra, frame_system, SystemBench::<Runtime>);
 			list_benchmark!(list, extra, pallet_balances, Balances);
 			list_benchmark!(list, extra, pallet_timestamp, Timestamp);
-			list_benchmark!(list, extra, pallet_template, TemplateModule);
+            list_benchmark!(list, extra, pallet_template, TemplateModule);
+			list_benchmark!(list, extra, pallet_benchmark_demo, BenchmarkDemoModule);
 
 			let storage_info = AllPalletsWithSystem::storage_info();
 
